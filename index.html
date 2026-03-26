@@ -17,21 +17,25 @@
 </head>
 <body>
 
-  <!-- OVERLAY SIDEBAR -->
+  <!-- ═══════════════════════════════════════════
+       OVERLAY SIDEBAR
+  ═══════════════════════════════════════════ -->
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <!-- SIDEBAR -->
+  <!-- ═══════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════ -->
   <aside class="sidebar" id="sidebar">
+
     <div class="sidebar-header">
       <span class="sidebar-title">
         <i class="fas fa-bolt"></i> MEGANE_LEARN
       </span>
-      <button class="convert-btn" id="convertBtn" aria-label="Convertisseur d'unités">
-        <i class="fas fa-exchange-alt"></i>
-      </button>
     </div>
 
     <div class="sidebar-body">
+
+      <!-- Toggle dark mode -->
       <div class="dark-toggle-row">
         <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
         <label class="toggle-switch">
@@ -39,121 +43,145 @@
           <span class="toggle-thumb"></span>
         </label>
       </div>
+
       <div class="sidebar-divider"></div>
+
+      <!-- Navigation -->
       <nav class="sidebar-nav">
-        <a href="index.html" class="sidebar-btn"><i class="fas fa-home"></i> Accueil</a>
-        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange-alt"></i> Convertisseur</a>
-        <a href="store.html" class="sidebar-btn"><i class="fas fa-store"></i> MEGANE Store</a>
+          
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange"></i> MEGANE CONVERT</a>
         <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
         <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
         <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
         <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
         <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
       </nav>
-      <div class="favorites-section" id="favoritesSection"></div>
+
+      <!-- Favoris (injecté par JS) -->
+      <div id="favSection" class="fav-section" style="display:none;">
+        <div class="sidebar-divider"></div>
+        <span class="fav-section-title"><i class="fas fa-star"></i> Favoris</span>
+        <div class="fav-list" id="favList"></div>
+      </div>
+
     </div>
+
     <div class="sidebar-footer">
-      <a href="store.html" class="sidebar-btn store-btn"><i class="fas fa-download"></i> Télécharger l'app</a>
+      <a href="store.html" class="sidebar-btn store-btn">
+        <i class="fas fa-store"></i> Mégane Store
+      </a>
     </div>
+
   </aside>
 
-  <!-- HEADER -->
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════ -->
   <header class="site-header">
     <div class="header-inner">
+
+      <!-- Barre de recherche -->
       <div class="search-wrapper">
         <span class="search-icon"><i class="fas fa-search"></i></span>
-        <input type="text" class="search-input" id="searchInput" placeholder="Rechercher un circuit..." autocomplete="off" />
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Rechercher un circuit..."
+          autocomplete="off"
+        />
       </div>
+
+      <!-- Logo -->
       <button class="logo-btn" id="logoBtn" aria-label="Ouvrir le menu">
-        <img src="logo.png" alt="MEGANE_LEARN" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <img
+          src="logo.png"
+          alt="MEGANE_LEARN"
+          class="logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
         <span class="logo-fallback">ML</span>
       </button>
+
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- ═══════════════════════════════════════════
+       CONTENU PRINCIPAL
+  ═══════════════════════════════════════════ -->
   <main class="main-content">
-    <div class="page-title-block">
-      <h1 class="page-title"><i class="fas fa-microchip"></i> Choisissez un circuit</h1>
-      <p class="page-subtitle"><i class="fas fa-chart-line"></i> Sélectionnez un circuit pour accéder à son cours ou à sa simulation.</p>
+
+    <!-- Cadre 1 : Consignes -->
+    <div class="card">
+      <div class="card-label"><i class="fas fa-circle-info"></i> Consignes</div>
+      <p class="consigne-text">
+        Appuyez sur <i class="fas fa-microchip c-accent"></i> pour accéder à la <strong>simulation</strong>
+        ou sur <i class="fas fa-book-open c-green"></i> pour ouvrir le <strong>cours</strong>.<br/>
+        Maintenez appuyé <strong>1 seconde</strong> pour ajouter un circuit à vos <strong>favoris</strong> <i class="fas fa-star c-gold"></i>.
+      </p>
     </div>
 
-    <!-- Circuits Série -->
-    <section class="circuit-section">
-      <h2 class="section-label"><i class="fas fa-waveform"></i> Circuits Série</h2>
-      <ul class="circuit-list" id="circuitListSerie">
-        <li data-name="RL Série" data-cours="cours-rl-serie.html" data-sim="rl-serie.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RL Série</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </li>
-        <li data-name="RC Série" data-cours="cours-rc-serie.html" data-sim="rc-serie.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RC Série</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </li>
-        <li data-name="RLC Série" data-cours="cours-rlc-serie.html" data-sim="rlc-serie.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RLC Série</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <!-- Cadre 2 : Circuits -->
+    <div class="card">
+      <div class="card-label"><i class="fas fa-microchip"></i> Circuits</div>
 
-    <!-- Circuits Parallèle -->
-    <section class="circuit-section">
-      <h2 class="section-label"><i class="fas fa-code-branch"></i> Circuits Parallèle</h2>
-      <ul class="circuit-list" id="circuitListPara">
-        <li data-name="RL Parallèle" data-cours="cours-rl-parallele.html" data-sim="rl-parallele.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RL Parallèle</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
+      <!-- Série -->
+      <div class="section-label"><i class="fas fa-arrows-left-right-to-line"></i> Série</div>
+      <ul class="circuit-list">
+        <li class="circuit-item" data-name="RL Série" data-sim="rl-serie.html" data-cours="cours-rl-serie.html">
+          <span class="circuit-name">RL Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
         </li>
-        <li data-name="RC Parallèle" data-cours="cours-rc-parallele.html" data-sim="rc-parallele.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RC Parallèle</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
+        <li class="circuit-item" data-name="RC Série" data-sim="rc-serie.html" data-cours="cours-rc-serie.html">
+          <span class="circuit-name">RC Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
         </li>
-        <li data-name="RLC Parallèle" data-cours="cours-rlc-parallele.html" data-sim="rlc-parallele.html">
-          <div class="circuit-row">
-            <div class="circuit-name-area">RLC Parallèle</div>
-            <div class="circuit-actions">
-              <button class="action-btn cours-btn" title="Cours"><i class="fas fa-book-open"></i></button>
-              <button class="action-btn sim-btn" title="Simulation"><i class="fas fa-microchip"></i></button>
-              <button class="action-btn fav-btn" title="Favoris"><i class="far fa-heart"></i></button>
-            </div>
-          </div>
+        <li class="circuit-item" data-name="RLC Série" data-sim="rlc-serie.html" data-cours="cours-rlc-serie.html">
+          <span class="circuit-name">RLC Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
         </li>
       </ul>
-    </section>
+
+      <!-- Parallèle -->
+      <div class="section-label"><i class="fas fa-code-branch"></i> Parallèle</div>
+      <ul class="circuit-list">
+        <li class="circuit-item" data-name="RL Parallèle" data-sim="rl-parallele.html" data-cours="cours-rl-parallele.html">
+          <span class="circuit-name">RL Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RC Parallèle" data-sim="rc-parallele.html" data-cours="cours-rc-parallele.html">
+          <span class="circuit-name">RC Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RLC Parallèle" data-sim="rlc-parallele.html" data-cours="cours-rlc-parallele.html">
+          <span class="circuit-name">RLC Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+      </ul>
+
+    </div>
 
   </main>
 
+  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
   <script src="js/index.js"></script>
@@ -161,10 +189,7 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
-    
-    document.getElementById('convertBtn')?.addEventListener('click', () => {
-      window.location.href = 'convert.html';
-    });
   </script>
+
 </body>
 </html>
