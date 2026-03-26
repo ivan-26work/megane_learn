@@ -53,12 +53,10 @@ body {
 .sidebar-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(2px);
-  z-index: 200;
+  
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition);
+  
 }
 
 .sidebar-overlay.active {
