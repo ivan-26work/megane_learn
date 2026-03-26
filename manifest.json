@@ -1,4 +1,13 @@
 {
+  "name": "MEGANE_LEARN",
+  "short_name": "MEGANE",
+  "description": "Apprentissage interactif des circuits RLC : simulateurs, cours et convertisseur d'unités",
+  "start_url": "/megane_learn/",
+  "scope": "/megane_learn/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#4f7cff",
+  "background_color": "#e8ecf1",
   "icons": [
     {
       "src": "images/icon-192.png",
@@ -11,22 +20,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "RL Série",
-      "short_name": "RL",
-      "description": "Accéder au circuit RL série",
-      "url": "rl-serie.html",
-      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Convertisseur",
-      "short_name": "Convert",
-      "description": "Convertir des unités",
-      "url": "convert.html",
-      "icons": [{ "src": "images/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
