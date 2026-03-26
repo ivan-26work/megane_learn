@@ -1,0 +1,404 @@
+/* ═══════════════════════════════════════════════
+   MEGANE_LEARN — cours-rlc-serie.css
+   Styles pour le cours RLC Série
+═══════════════════════════════════════════════ */
+
+.main-content {
+  padding-bottom: 40px;
+}
+
+/* Cartes de cours */
+.course-card {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  display: flex;
+  gap: 20px;
+  transition: all var(--transition);
+}
+
+.course-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.course-content {
+  flex: 1;
+}
+
+.course-content h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-main);
+}
+
+.course-content p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.course-content strong {
+  color: var(--accent);
+}
+
+.course-content ul {
+  margin: 12px 0;
+  padding-left: 24px;
+  color: var(--text-muted);
+}
+
+.course-content li {
+  margin: 6px 0;
+}
+
+/* Schéma */
+.schema-container {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+  margin-top: 16px;
+}
+
+.course-schema {
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
+}
+
+/* Data grid */
+.data-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.data-item {
+  background: var(--surface);
+  padding: 12px 20px;
+  border-radius: 16px;
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.data-symbol {
+  color: var(--accent);
+  font-weight: 800;
+  margin-right: 8px;
+}
+
+/* Variables */
+.var-highlight {
+  color: var(--accent);
+  font-weight: 800;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+}
+
+/* Calculs */
+.calculation {
+  background: var(--surface);
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin: 12px 0;
+  text-align: center;
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+}
+
+/* Sous-sections */
+.sub-section {
+  margin: 20px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+}
+
+.sub-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.sub-section p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* Diagramme de Fresnel grand format */
+.fresnel-card {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+}
+
+.fresnel-large {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  background: #060b14;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.fresnel-large canvas {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  background: #060b14;
+  border-radius: 8px;
+}
+
+.legend-large {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.values-recap {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+}
+
+.recap-item {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.recap-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* Favoris dans sidebar */
+.favorites-section {
+  margin-top: 8px;
+}
+
+.favorites-header {
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.favorites-header i {
+  color: var(--gold);
+  font-size: 0.7rem;
+}
+
+.fav-btn i {
+  color: var(--gold) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .data-grid {
+    justify-content: center;
+  }
+  
+  .sub-section {
+    text-align: left;
+  }
+  
+  .values-recap {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .course-content ul {
+    text-align: left;
+  }
+}
+/* ── FORMULES : GESTION DES RETOURS À LA LIGNE ── */
+
+/* Pour toutes les formules dans les cartes */
+.formula-expr,
+.formula,
+.calculation,
+.formula-card-theory .formula,
+.sub-section .formula-expr {
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
+/* Pour les fractions qui doivent rester sur une ligne si possible */
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+/* Pour les formules longues */
+.formula-row {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.formula-row .formula-expr {
+  flex-shrink: 1;
+  min-width: 120px;
+  max-width: 100%;
+}
+
+/* Pour les calculs dans le cours */
+.calculation {
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+/* Pour les grilles de formules */
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.formula-card-theory {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.formula-card-theory .formula {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* Pour les sous-sections */
+.sub-section {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.sub-section .formula-expr,
+.sub-section .calculation {
+  display: block;
+  margin: 8px 0;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 480px) {
+  .formula-expr,
+  .formula,
+  .calculation {
+    font-size: 0.75rem;
+  }
+  
+  .formulas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .formula-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .formula-row .formula-expr {
+    width: 100%;
+  }
+  
+  .formula-row .formula-desc {
+    width: 100%;
+  }
+  
+  .formula-row .formula-result {
+    align-self: flex-end;
+  }
+}
+/* Gestion des formules dans les cours */
+.calculation {
+  white-space: normal;
+  word-break: break-word;
+  text-align: left;
+  padding: 12px 16px;
+  line-height: 1.5;
+}
+
+.calculation strong {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Pour les formules en ligne */
+.inline-formula {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Pour les fractions dans le texte */
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.fraction-num {
+  border-bottom: 2px solid var(--accent);
+  padding: 0 2px;
+}
+
+.fraction-den {
+  padding: 0 2px;
+}
