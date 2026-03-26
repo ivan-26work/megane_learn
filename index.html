@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4f7cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN" />
+  <link rel="manifest" href="manifest.json" />
+  <title>MEGANE_LEARN — Circuits RLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       OVERLAY SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ═══════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════ -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+      <span class="sidebar-title">
+        <i class="fas fa-bolt"></i> MEGANE_LEARN
+      </span>
+    </div>
+
+    <div class="sidebar-body">
+
+      <!-- Toggle dark mode -->
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkToggle" />
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+
+      <div class="sidebar-divider"></div>
+
+      <!-- Navigation -->
+      <nav class="sidebar-nav">
+          
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange"></i> MEGANE CONVERT</a>
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+
+      <!-- Favoris (injecté par JS) -->
+      <div id="favSection" class="fav-section" style="display:none;">
+        <div class="sidebar-divider"></div>
+        <span class="fav-section-title"><i class="fas fa-star"></i> Favoris</span>
+        <div class="fav-list" id="favList"></div>
+      </div>
+
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="store.html" class="sidebar-btn store-btn">
+        <i class="fas fa-store"></i> Mégane Store
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <!-- Barre de recherche -->
+      <div class="search-wrapper">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Rechercher un circuit..."
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Logo -->
+      <button class="logo-btn" id="logoBtn" aria-label="Ouvrir le menu">
+        <img
+          src="logo.png"
+          alt="MEGANE_LEARN"
+          class="logo-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <span class="logo-fallback">ML</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       CONTENU PRINCIPAL
+  ═══════════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Cadre 1 : Consignes -->
+    <div class="card">
+      <div class="card-label"><i class="fas fa-circle-info"></i> Consignes</div>
+      <p class="consigne-text">
+        Appuyez sur <i class="fas fa-microchip c-accent"></i> pour accéder à la <strong>simulation</strong>
+        ou sur <i class="fas fa-book-open c-green"></i> pour ouvrir le <strong>cours</strong>.<br/>
+        Maintenez appuyé <strong>1 seconde</strong> pour ajouter un circuit à vos <strong>favoris</strong> <i class="fas fa-star c-gold"></i>.
+      </p>
+    </div>
+
+    <!-- Cadre 2 : Circuits -->
+    <div class="card">
+      <div class="card-label"><i class="fas fa-microchip"></i> Circuits</div>
+
+      <!-- Série -->
+      <div class="section-label"><i class="fas fa-arrows-left-right-to-line"></i> Série</div>
+      <ul class="circuit-list">
+        <li class="circuit-item" data-name="RL Série" data-sim="rl-serie.html" data-cours="cours-rl-serie.html">
+          <span class="circuit-name">RL Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RC Série" data-sim="rc-serie.html" data-cours="cours-rc-serie.html">
+          <span class="circuit-name">RC Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RLC Série" data-sim="rlc-serie.html" data-cours="cours-rlc-serie.html">
+          <span class="circuit-name">RLC Série</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+      </ul>
+
+      <!-- Parallèle -->
+      <div class="section-label"><i class="fas fa-code-branch"></i> Parallèle</div>
+      <ul class="circuit-list">
+        <li class="circuit-item" data-name="RL Parallèle" data-sim="rl-parallele.html" data-cours="cours-rl-parallele.html">
+          <span class="circuit-name">RL Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RC Parallèle" data-sim="rc-parallele.html" data-cours="cours-rc-parallele.html">
+          <span class="circuit-name">RC Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+        <li class="circuit-item" data-name="RLC Parallèle" data-sim="rlc-parallele.html" data-cours="cours-rlc-parallele.html">
+          <span class="circuit-name">RLC Parallèle</span>
+          <div class="action-divider"></div>
+          <button class="action-btn sim" title="Simulation"><i class="fas fa-microchip"></i></button>
+          <button class="action-btn cours" title="Cours"><i class="fas fa-book-open"></i></button>
+          <div class="hold-bar"></div>
+        </li>
+      </ul>
+
+    </div>
+
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/index.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+
+</body>
+</html>

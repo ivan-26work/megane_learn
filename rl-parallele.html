@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#4f7cff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <title>RL Parallèle - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/structure.css"/>
+  <link rel="stylesheet" href="css/rl-parallele.css"/>
+</head>
+<body>
+
+  <!-- OVERLAY SIDEBAR -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">MEGANE_LEARN</span>
+    </div>
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkToggle"/>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+    </div>
+    <div class="sidebar-footer">
+      <a href="cours-rl-parallele.html" class="sidebar-btn cours-btn"><i class="fas fa-graduation-cap"></i> Cours RL Parallèle</a>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title">Circuit RL Parallèle</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- ONGLET PARAMÈTRES -->
+    <div id="tab-parametres" class="tab-content active">
+      <div class="card">
+        <div class="card-label"><i class="fas fa-microchip"></i> Schéma du circuit</div>
+        <div class="schema-frame">
+          <img src="images/rl-parallele.png" alt="Circuit RL Parallèle" class="circuit-schema-img"/>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label"><i class="fas fa-sliders-h"></i> Paramètres</div>
+        <div class="param-row">
+          <div class="param-header">
+            <span class="param-name">Tension <span>U</span></span>
+            <textarea class="param-input" id="val_U" rows="1">230</textarea>
+          </div>
+          <input type="range" id="sl_U" min="0" max="400" value="230" step="5" class="gradient-u"/>
+          <div class="param-unit">Volts (V) — min 0 / max 400</div>
+        </div>
+        <div class="param-row">
+          <div class="param-header">
+            <span class="param-name">Résistance <span>R</span></span>
+            <textarea class="param-input" id="val_R" rows="1">100</textarea>
+          </div>
+          <input type="range" id="sl_R" min="0" max="500" value="100" step="5" class="gradient-r"/>
+          <div class="param-unit">Ohms (Ω) — min 0 / max 500</div>
+        </div>
+        <div class="param-row">
+          <div class="param-header">
+            <span class="param-name">Inductance <span>L</span></span>
+            <textarea class="param-input" id="val_L" rows="1">200</textarea>
+          </div>
+          <input type="range" id="sl_L" min="0" max="1000" value="200" step="10" class="gradient-l"/>
+          <div class="param-unit">Millihenry (mH) — min 0 / max 1000</div>
+        </div>
+        <div class="param-row">
+          <div class="param-header">
+            <span class="param-name">Fréquence <span>f</span></span>
+            <textarea class="param-input" id="val_f" rows="1">50</textarea>
+          </div>
+          <input type="range" id="sl_f" min="0" max="1000" value="50" step="5" class="gradient-f"/>
+          <div class="param-unit">Hertz (Hz) — min 0 / max 1000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONGLET CALCULS -->
+    <div id="tab-calculs" class="tab-content">
+      <div class="card">
+        <div class="card-label"><i class="fas fa-calculator"></i> Valeurs calculées</div>
+        <div class="result-grid">
+          <div class="result-item"><div class="rlabel">ω — Pulsation</div><div class="rval c-accent" id="calc_omega">—</div></div>
+          <div class="result-item"><div class="rlabel">XL — Réactance</div><div class="rval c-gold" id="calc_XL">—</div></div>
+          <div class="result-item"><div class="rlabel">IR — Courant R</div><div class="rval c-accent" id="calc_IR">—</div></div>
+          <div class="result-item"><div class="rlabel">IL — Courant L</div><div class="rval c-gold" id="calc_IL">—</div></div>
+          <div class="result-item"><div class="rlabel">I — Courant total</div><div class="rval c-white" id="calc_I">—</div></div>
+          <div class="result-item"><div class="rlabel">Z — Impédance</div><div class="rval c-green" id="calc_Z">—</div></div>
+          <div class="result-item"><div class="rlabel">φ — Déphasage</div><div class="rval c-red" id="calc_phi">—</div></div>
+          <div class="result-item"><div class="rlabel">cos φ — Facteur P</div><div class="rval c-green" id="calc_cosphi">—</div></div>
+          <div class="result-item"><div class="rlabel">P — Puissance active</div><div class="rval c-green" id="calc_P">—</div></div>
+          <div class="result-item"><div class="rlabel">Q — Puissance réactive</div><div class="rval c-gold" id="calc_Q">—</div></div>
+          <div class="result-item full"><div class="rlabel">S — Puissance apparente</div><div class="rval c-white" id="calc_S">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONGLET DIAGRAMME -->
+    <div id="tab-diagramme" class="tab-content">
+      <div class="card">
+        <div class="card-label"><i class="fas fa-chart-line"></i> Diagramme de Fresnel</div>
+        <div class="diagram-frame"><canvas id="fresnelCanvas" width="440" height="380"></canvas></div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#4f7cff"></div>U (tension)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#2ecc71"></div>IR (courant résistance)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffc94a"></div>IL (courant inductance)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff4d6d"></div>I (courant total)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label"><i class="fas fa-chart-simple"></i> Valeurs du diagramme</div>
+        <div class="values-grid">
+          <div class="value-item"><div class="value-label"><span class="var">IR</span> — Courant résistance</div><div class="value-number c-green" id="diag_IR">—</div></div>
+          <div class="value-item"><div class="value-label"><span class="var">IL</span> — Courant inductance</div><div class="value-number c-gold" id="diag_IL">—</div></div>
+          <div class="value-item"><div class="value-label"><span class="var">I</span> — Courant total</div><div class="value-number c-red" id="diag_I">—</div></div>
+          <div class="value-item"><div class="value-label"><span class="var">φ</span> — Déphasage</div><div class="value-number c-accent" id="diag_phi">—</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONGLET FORMULES -->
+    <div id="tab-formules" class="tab-content">
+      <div class="card">
+        <div class="card-label"><i class="fas fa-square-root-alt"></i> Formules — Circuit RL Parallèle</div>
+        <div class="formula-group"><div class="formula-title"><span class="badge">1</span> Paramètres</div>
+          <div class="formula-card">
+            <div class="formula-row"><div class="formula-expr">U = <span id="form_U_val">230</span> V</div><div class="formula-desc">Tension efficace (commune)</div></div>
+            <div class="formula-row"><div class="formula-expr">R = <span id="form_R_val">100</span> Ω</div><div class="formula-desc">Résistance</div></div>
+            <div class="formula-row"><div class="formula-expr">L = <span id="form_L_val">200</span> mH</div><div class="formula-desc">Inductance</div></div>
+            <div class="formula-row"><div class="formula-expr">f = <span id="form_f_val">50</span> Hz</div><div class="formula-desc">Fréquence</div></div>
+          </div>
+        </div>
+        <div class="formula-group"><div class="formula-title"><span class="badge">2</span> Formules fondamentales</div>
+          <div class="formula-card">
+            <div class="formula-row"><div class="formula-expr">ω = 2π × f</div><div class="formula-desc">Pulsation (rad/s)</div><div class="formula-result" id="form_omega">—</div></div>
+            <div class="formula-row"><div class="formula-expr">XL = ω × L = 2π × f × L</div><div class="formula-desc">Réactance inductive (Ω)</div><div class="formula-result" id="form_XL">—</div></div>
+            <div class="formula-row"><div class="formula-expr">IR = <span class="fraction"><span class="fraction-num">U</span><span class="fraction-den">R</span></span></div><div class="formula-desc">Courant dans la résistance (A)</div><div class="formula-result" id="form_IR">—</div></div>
+            <div class="formula-row"><div class="formula-expr">IL = <span class="fraction"><span class="fraction-num">U</span><span class="fraction-den">XL</span></span></div><div class="formula-desc">Courant dans l'inductance (A)</div><div class="formula-result" id="form_IL">—</div></div>
+            <div class="formula-row"><div class="formula-expr">I = √(IR² + IL²)</div><div class="formula-desc">Courant total (A)</div><div class="formula-result" id="form_I">—</div></div>
+            <div class="formula-row"><div class="formula-expr">Z = <span class="fraction"><span class="fraction-num">U</span><span class="fraction-den">I</span></span></div><div class="formula-desc">Impédance (Ω)</div><div class="formula-result" id="form_Z">—</div></div>
+          </div>
+        </div>
+        <div class="formula-group"><div class="formula-title"><span class="badge">3</span> Déphasage</div>
+          <div class="formula-card">
+            <div class="formula-row"><div class="formula-expr">φ = arctan(<span class="fraction"><span class="fraction-num">IL</span><span class="fraction-den">IR</span></span>) = arctan(<span class="fraction"><span class="fraction-num">R</span><span class="fraction-den">XL</span></span>)</div><div class="formula-desc">Angle de déphasage (courant en retard)</div><div class="formula-result" id="form_phi">—</div></div>
+            <div class="formula-row"><div class="formula-expr">cos φ = <span class="fraction"><span class="fraction-num">IR</span><span class="fraction-den">I</span></span></div><div class="formula-desc">Facteur de puissance</div><div class="formula-result" id="form_cosphi">—</div></div>
+          </div>
+        </div>
+        <div class="formula-group"><div class="formula-title"><span class="badge">4</span> Puissances</div>
+          <div class="formula-card">
+            <div class="formula-row"><div class="formula-expr">P = U × I × cos φ = <span class="fraction"><span class="fraction-num">U²</span><span class="fraction-den">R</span></span></div><div class="formula-desc">Puissance active (W)</div><div class="formula-result" id="form_P">—</div></div>
+            <div class="formula-row"><div class="formula-expr">Q = U × I × sin φ = <span class="fraction"><span class="fraction-num">U²</span><span class="fraction-den">XL</span></span></div><div class="formula-desc">Puissance réactive (VAR)</div><div class="formula-result" id="form_Q">—</div></div>
+            <div class="formula-row"><div class="formula-expr">S = U × I = √(P² + Q²)</div><div class="formula-desc">Puissance apparente (VA)</div><div class="formula-result" id="form_S">—</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER NAV -->
+  <footer class="footer-nav">
+    <div class="nav-inner">
+      <button class="nav-btn" data-tab="parametres" title="Paramètres"><i class="fas fa-sliders-h"></i></button>
+      <button class="nav-btn" data-tab="calculs" title="Calculs"><i class="fas fa-calculator"></i></button>
+      <button class="nav-btn" data-tab="diagramme" title="Diagramme"><i class="fas fa-chart-line"></i></button>
+      <button class="nav-btn" data-tab="formules" title="Formules"><i class="fas fa-square-root-alt"></i></button>
+    </div>
+  </footer>
+
+  <script src="js/structure.js"></script>
+  <script src="js/rl-parallele.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+  </script>
+</body>
+</html>

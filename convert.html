@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#4f7cff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <title>Convertisseur - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/structure.css"/>
+  <link rel="stylesheet" href="css/convert.css"/>
+</head>
+<body>
+
+  <!-- OVERLAY SIDEBAR -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">
+        <i class="fas fa-bolt"></i> MEGANE_LEARN
+      </span>
+    </div>
+
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkToggle"/>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+      <div class="favorites-section" id="favoritesSection"></div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title"><i class="fas fa-exchange-alt"></i> Convertisseur d'unités</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- CADRE 1 : SORTIE (RÉSULTAT) - BLEU -->
+    <div class="converter-card output-card">
+      <div class="card-header" id="outputHeader">
+        <i class="fas fa-arrow-right-to-bracket"></i> Résultat
+      </div>
+      <div class="units-scroll" id="outputUnits"></div>
+      <div class="result-display">
+        <span class="result-value" id="resultValue">0</span>
+      </div>
+    </div>
+
+    <!-- CADRE 2 : ENTRÉE (INPUT) - VERT -->
+    <div class="converter-card input-card">
+      <div class="card-header" id="inputHeader">
+        <i class="fas fa-arrow-left-from-bracket"></i> Valeur à convertir
+      </div>
+      <div class="units-scroll" id="inputUnits"></div>
+      <div class="input-group">
+        <input type="number" id="inputValue" class="value-input" value="0" step="any" placeholder="0"/>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER NAV (scrollable horizontal) -->
+  <footer class="footer-nav">
+    <div class="nav-inner-scroll" id="conversionNav"></div>
+  </footer>
+
+  <script src="js/structure.js"></script>
+  <script src="js/convert.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+  </script>
+</body>
+</html>

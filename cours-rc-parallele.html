@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#4f7cff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <title>Cours RC Parallèle - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/structure.css"/>
+  <link rel="stylesheet" href="css/cours-rc-parallele.css"/>
+</head>
+<body>
+
+  <!-- OVERLAY SIDEBAR -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title"><i class="fas fa-bolt"></i> MEGANE_LEARN</span>
+    </div>
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="darkToggle"/>
+          <span class="toggle-thumb"></span>
+        </label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+      <div class="favorites-section" id="favoritesSection"></div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title"><i class="fas fa-graduation-cap"></i> Cours RC Parallèle</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- SECTION 1 : DÉFINITION -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-info-circle"></i></div>
+      <div class="course-content">
+        <h2>Définition du circuit RC parallèle</h2>
+        <p>Un <strong>circuit RC parallèle</strong> est composé d'une <strong>résistance R</strong> et d'un <strong>condensateur C</strong> montés en parallèle, alimentés par une tension alternative <strong>u(t) = U√2 sin(ωt)</strong>.</p>
+        <p>Dans ce circuit, la tension est commune aux deux branches. Le courant total <strong>I</strong> est la somme vectorielle du courant dans R (<strong>IR</strong>) et du courant dans C (<strong>IC</strong>).</p>
+        <p>Le courant dans la résistance est <strong>en phase</strong> avec la tension, tandis que le courant dans le condensateur est <strong>en avance de 90°</strong>.</p>
+        <div class="schema-container">
+          <img src="images/rc-parallele.png" alt="Circuit RC Parallèle" class="course-schema"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 : DONNÉES DE L'EXEMPLE -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-database"></i></div>
+      <div class="course-content">
+        <h2>Exemple d'étude</h2>
+        <p>Considérons un circuit RC parallèle avec les valeurs suivantes :</p>
+        <div class="data-grid">
+          <div class="data-item"><span class="data-symbol">U</span> = 230 V</div>
+          <div class="data-item"><span class="data-symbol">R</span> = 100 Ω</div>
+          <div class="data-item"><span class="data-symbol">C</span> = 100 µF</div>
+          <div class="data-item"><span class="data-symbol">f</span> = 50 Hz</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3 : ÉTUDE DES GRANDEURS (ORDRE LOGIQUE) -->
+
+    <!-- 1. Pulsation ω -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-chart-line"></i></div>
+      <div class="course-content">
+        <h2>1. Pulsation <span class="var-highlight">ω</span> (rad/s)</h2>
+        <p>La pulsation représente la vitesse angulaire du signal alternatif :</p></div>
+        
+        <div><strong>ω = 2π × f</strong>.</div>
+        
+        <p>Avec f = 50 Hz :</p>
+        <div class="calculation"><br>ω = 2π × 50 = <strong>314,2 rad/s</strong></div>
+      </div>
+    </div>
+
+    <!-- 2. Réactance capacitive XC -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-capacitor"></i></div>
+      <div class="course-content">
+        <h2>2. Réactance capacitive <span class="var-highlight">XC</span> (Ω)</h2>
+        <p>La réactance capacitive s'oppose au passage du courant : <strong>XC = 1 / (ω × C) = 1 / (2π × f × C)</strong>.</p>
+        <p>Avec C = 100 µF = 0,0001 F :</p>
+        <div class="calculation">XC = 1 / (2π × 50 × 0,0001) = 1 / (0,03142) = <strong>31,8 Ω</strong></div>
+      </div>
+    </div>
+
+    <!-- 3. Courant dans la résistance IR -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-charging-station"></i></div>
+      <div class="course-content">
+        <h2>3. Courant dans la résistance <span class="var-highlight">IR</span> (A)</h2>
+        <p>Le courant dans la résistance est en phase avec la tension : <strong>IR = U / R</strong>.</p>
+        <p>Avec U = 230 V et R = 100 Ω :</p>
+        <div class="calculation">IR = 230 / 100 = <strong>2,30 A</strong></div>
+      </div>
+    </div>
+
+    <!-- 4. Courant dans le condensateur IC -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-waveform"></i></div>
+      <div class="course-content">
+        <h2>4. Courant dans le condensateur <span class="var-highlight">IC</span> (A)</h2>
+        <p>Le courant dans le condensateur est en avance de 90° sur la tension : <strong>IC = U / XC</strong>.</p>
+        <p>Avec U = 230 V et XC = 31,8 Ω :</p>
+        <div class="calculation">IC = 230 / 31,8 = <strong>7,23 A</strong></div>
+      </div>
+    </div>
+
+    <!-- 5. Courant total I -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-bolt"></i></div>
+      <div class="course-content">
+        <h2>5. Courant total <span class="var-highlight">I</span> (A)</h2>
+        <p>Le courant total est la somme vectorielle des courants : <strong>I = √(IR² + IC²)</strong>.</p>
+        <p>Avec IR = 2,30 A et IC = 7,23 A :</p>
+        <div class="calculation">I = √(2,30² + 7,23²) = √(5,29 + 52,27) = √57,56 = <strong>7,59 A</strong></div>
+      </div>
+    </div>
+
+    <!-- 6. Impédance Z -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-chart-simple"></i></div>
+      <div class="course-content">
+        <h2>6. Impédance <span class="var-highlight">Z</span> (Ω)</h2>
+        <p>L'impédance du circuit est le rapport de la tension au courant total : <strong>Z = U / I</strong>.</p>
+        <p>Avec U = 230 V et I = 7,59 A :</p>
+        <div class="calculation">Z = 230 / 7,59 = <strong>30,3 Ω</strong></div>
+      </div>
+    </div>
+
+    <!-- 7. Déphasage φ -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-angle-double-right"></i></div>
+      <div class="course-content">
+        <h2>7. Déphasage <span class="var-highlight">φ</span> (degré)</h2>
+        <p>Le déphasage entre la tension et le courant total est donné par : <strong>φ = arctan(-IC / IR)</strong> (négatif car le courant est en avance).</p>
+        <p>Avec IC = 7,23 A et IR = 2,30 A :</p>
+        <div class="calculation">φ = arctan(-7,23 / 2,30) = arctan(-3,143) = <strong>-72,4°</strong></div>
+        <p>Le courant total est en avance de 72,4° par rapport à la tension (circuit capacitif).</p>
+      </div>
+    </div>
+
+    <!-- 8. Facteur de puissance cos φ -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-percent"></i></div>
+      <div class="course-content">
+        <h2>8. Facteur de puissance <span class="var-highlight">cos φ</span></h2>
+        <p>Le facteur de puissance est le rapport entre IR et I : <strong>cos φ = IR / I</strong>.</p>
+        <p>Avec IR = 2,30 A et I = 7,59 A :</p>
+        <div class="calculation">cos φ = 2,30 / 7,59 = <strong>0,303</strong></div>
+      </div>
+    </div>
+
+    <!-- 9. Puissances -->
+    <div class="course-card">
+      <div class="course-icon"><i class="fas fa-chart-pie"></i></div>
+      <div class="course-content">
+        <h2>9. Puissances</h2>
+        
+        <div class="sub-section">
+          <h3>Puissance active <span class="var-highlight">P</span> (W)</h3>
+          <p>La puissance active est dissipée dans la résistance : <strong>P = U × I × cos φ = U² / R</strong>.</p>
+          <div class="calculation">P = 230 × 7,59 × 0,303 = <strong>529 W</strong></div>
+        </div>
+        
+        <div class="sub-section">
+          <h3>Puissance réactive <span class="var-highlight">Q</span> (VAR)</h3>
+          <p>La puissance réactive est échangée avec le condensateur (négative) : <strong>Q = U × I × sin φ = -U² / XC</strong>.</p>
+          <div class="calculation">Q = 230 × 7,59 × sin(-72,4°) = <strong>-1663 VAR</strong></div>
+        </div>
+        
+        <div class="sub-section">
+          <h3>Puissance apparente <span class="var-highlight">S</span> (VA)</h3>
+          <p>La puissance apparente est le produit U × I : <strong>S = U × I = √(P² + Q²)</strong>.</p>
+          <div class="calculation">S = 230 × 7,59 = <strong>1746 VA</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 : DIAGRAMME DE FRESNEL GRAND FORMAT -->
+    <div class="course-card fresnel-card">
+      <div class="course-icon"><i class="fas fa-chart-line"></i></div>
+      <div class="course-content">
+        <h2>Diagramme de Fresnel</h2>
+        <p>Représentation vectorielle des courants avec les valeurs calculées :</p>
+        <div class="fresnel-large">
+          <canvas id="fresnelCanvas" width="500" height="450"></canvas>
+        </div>
+        <div class="legend-large">
+          <div class="legend-item"><div class="legend-dot" style="background:#4f7cff"></div>U (tension)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#2ecc71"></div>IR (courant résistance)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffc94a"></div>IC (courant condensateur)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ff4d6d"></div>I (courant total)</div>
+        </div>
+        <div class="values-recap">
+          <div class="recap-item"><span class="recap-label">IR =</span> 2,30 A</div>
+          <div class="recap-item"><span class="recap-label">IC =</span> 7,23 A</div>
+          <div class="recap-item"><span class="recap-label">I =</span> 7,59 A</div>
+          <div class="recap-item"><span class="recap-label">φ =</span> -72,4°</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/structure.js"></script>
+  <script src="js/cours-rc-parallele.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }
+  </script>
+</body>
+</html>
