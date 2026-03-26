@@ -21,5 +21,41 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://ivan-26work.github.io/megane_learn/manifest.json"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "RL Série",
+      "short_name": "RL",
+      "description": "Accéder au circuit RL série",
+      "url": "rl-serie.html",
+      "icons": [
+        {
+          "src": "images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Convertisseur",
+      "short_name": "Convert",
+      "description": "Convertir des unités",
+      "url": "convert.html",
+      "icons": [
+        {
+          "src": "images/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "fr",
+  "dir": "ltr"
 }
