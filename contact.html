@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4f7cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Contact - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/structure.css" />
+  <style>
+    .contact-content {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+    }
+    .contact-content h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .contact-content p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .contact-card {
+      background: var(--surface);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s ease;
+    }
+    .contact-card:hover {
+      transform: translateX(4px);
+    }
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: white;
+      flex-shrink: 0;
+    }
+    .contact-info {
+      flex: 1;
+    }
+    .contact-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+    .contact-info p {
+      margin: 0;
+      font-size: 0.85rem;
+    }
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      word-break: break-all;
+    }
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+    .social-grid {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin: 24px 0 16px;
+    }
+    .social-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+      transition: all 0.2s ease;
+    }
+    .social-btn:hover {
+      transform: translateY(-2px);
+      color: var(--accent);
+    }
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-left: 8px;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+    .copy-btn:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title"><i class="fas fa-bolt"></i> MEGANE_LEARN</span>
+      <button class="convert-btn" id="convertBtn"><i class="fas fa-exchange-alt"></i></button>
+    </div>
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch"><input type="checkbox" id="darkToggle" /><span class="toggle-thumb"></span></label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-btn"><i class="fas fa-home"></i> Accueil</a>
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange-alt"></i> Convertisseur</a>
+        <a href="store.html" class="sidebar-btn"><i class="fas fa-store"></i> MEGANE Store</a>
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+      <div class="favorites-section" id="favoritesSection"></div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="store.html" class="sidebar-btn store-btn"><i class="fas fa-download"></i> Télécharger l'app</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title"><i class="fas fa-envelope"></i> Contact</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="contact-content">
+      <h2><i class="fas fa-comment-dots"></i> Nous contacter</h2>
+      <p>Vous avez une question, une suggestion ou vous rencontrez un problème ? N'hésitez pas à nous écrire. Nous vous répondrons dans les plus brefs délais.</p>
+
+      <!-- Email -->
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-info">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:ipoteivan23@gmail.com" class="contact-link">ipoteivan23@gmail.com</a>
+            <button class="copy-btn" onclick="copyToClipboard('ipoteivan23@gmail.com')"><i class="fas fa-copy"></i></button>
+          </p>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="contact-card">
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-info">
+          <h3>WhatsApp</h3>
+          <p>
+            <a href="https://wa.me/2250503588336" class="contact-link" target="_blank">+225 05 03 58 83 36</a>
+            <button class="copy-btn" onclick="copyToClipboard('0503588336')"><i class="fas fa-copy"></i></button>
+          </p>
+        </div>
+      </div>
+
+      <h2><i class="fas fa-share-alt"></i> Suivez-nous</h2>
+      <div class="social-grid">
+        <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/structure.js"></script>
+  <script>
+    document.getElementById('backBtn')?.addEventListener('click', () => window.location.href = 'index.html');
+    document.getElementById('convertBtn')?.addEventListener('click', () => window.location.href = 'convert.html');
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.textContent = 'Copié !';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 1500);
+      }).catch(() => {
+        alert('Impossible de copier');
+      });
+    }
+  </script>
+</body>
+</html>

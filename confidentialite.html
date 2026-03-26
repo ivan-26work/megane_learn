@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4f7cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Confidentialité - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/structure.css" />
+  <style>
+    .privacy-content {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+    }
+    .privacy-content h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .privacy-content p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .privacy-content ul {
+      margin: 16px 0;
+      padding-left: 24px;
+      color: var(--text-muted);
+    }
+    .privacy-content li {
+      margin: 8px 0;
+    }
+    .data-badge {
+      background: var(--surface);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      display: inline-block;
+      margin: 4px 4px 0 0;
+      box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+    }
+    .last-update {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--shadow-dark);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title"><i class="fas fa-bolt"></i> MEGANE_LEARN</span>
+      <button class="convert-btn" id="convertBtn"><i class="fas fa-exchange-alt"></i></button>
+    </div>
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch"><input type="checkbox" id="darkToggle" /><span class="toggle-thumb"></span></label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-btn"><i class="fas fa-home"></i> Accueil</a>
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange-alt"></i> Convertisseur</a>
+        <a href="store.html" class="sidebar-btn"><i class="fas fa-store"></i> MEGANE Store</a>
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+      <div class="favorites-section" id="favoritesSection"></div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="store.html" class="sidebar-btn store-btn"><i class="fas fa-download"></i> Télécharger l'app</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title"><i class="fas fa-lock"></i> Confidentialité</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="privacy-content">
+      <h2><i class="fas fa-shield-alt"></i> Politique de confidentialité</h2>
+      <p>Chez MEGANE_LEARN, nous respectons votre vie privée. Cette politique explique quelles données sont collectées et comment elles sont utilisées.</p>
+
+      <h2><i class="fas fa-database"></i> Données collectées</h2>
+      <p>L'application stocke localement sur votre appareil :</p>
+      <ul>
+        <li><span class="data-badge">Favoris</span> - Circuits que vous avez marqués</li>
+        <li><span class="data-badge">Historique</span> - 3 derniers circuits consultés</li>
+        <li><span class="data-badge">Clics</span> - Compteur de visites sur les circuits</li>
+        <li><span class="data-badge">Thème</span> - Préférence clair/sombre</li>
+      </ul>
+      <p><strong>Aucune donnée n'est envoyée à un serveur externe.</strong> Toutes les informations restent sur votre appareil via localStorage.</p>
+
+      <h2><i class="fas fa-cookie-bite"></i> Cookies et stockage local</h2>
+      <p>Nous n'utilisons pas de cookies tiers. Le stockage local (localStorage) est utilisé uniquement pour sauvegarder vos préférences et favoris.</p>
+
+      <h2><i class="fas fa-children"></i> Données des mineurs</h2>
+      <p>Notre application est conçue pour un usage éducatif. Aucune donnée personnelle n'est collectée, quel que soit l'âge de l'utilisateur.</p>
+
+      <h2><i class="fas fa-phone-alt"></i> Contact</h2>
+      <p>Pour toute question concernant cette politique, contactez-nous à : <a href="mailto:contact@megane-learn.fr" style="color: var(--accent);">contact@megane-learn.fr</a></p>
+
+      <div class="last-update">
+        <i class="fas fa-calendar-alt"></i> Dernière mise à jour : 26 mars 2026
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/structure.js"></script>
+  <script>
+    document.getElementById('backBtn')?.addEventListener('click', () => window.location.href = 'index.html');
+    document.getElementById('convertBtn')?.addEventListener('click', () => window.location.href = 'convert.html');
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+</body>
+</html>

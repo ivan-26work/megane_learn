@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#4f7cff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MEGANE_LEARN" />
+  <link rel="manifest" href="manifest.json" />
+  <title>À propos - MEGANE_LEARN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/structure.css" />
+  <style>
+    .about-content {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+    }
+    .about-content h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .about-content h2 i {
+      color: var(--accent);
+    }
+    .about-content p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .about-content ul {
+      margin: 16px 0;
+      padding-left: 24px;
+      color: var(--text-muted);
+    }
+    .about-content li {
+      margin: 8px 0;
+    }
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .tech-badge {
+      background: var(--surface);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+    }
+    .version {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--shadow-dark);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title"><i class="fas fa-bolt"></i> MEGANE_LEARN</span>
+      <button class="convert-btn" id="convertBtn" aria-label="Convertisseur d'unités"><i class="fas fa-exchange-alt"></i></button>
+    </div>
+    <div class="sidebar-body">
+      <div class="dark-toggle-row">
+        <span class="toggle-label"><i class="fas fa-moon"></i> Mode sombre</span>
+        <label class="toggle-switch"><input type="checkbox" id="darkToggle" /><span class="toggle-thumb"></span></label>
+      </div>
+      <div class="sidebar-divider"></div>
+      <nav class="sidebar-nav">
+        <a href="index.html" class="sidebar-btn"><i class="fas fa-home"></i> Accueil</a>
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange-alt"></i> Convertisseur</a>
+        <a href="store.html" class="sidebar-btn"><i class="fas fa-store"></i> MEGANE Store</a>
+        <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
+        <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
+        <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+      </nav>
+      <div class="favorites-section" id="favoritesSection"></div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="store.html" class="sidebar-btn store-btn"><i class="fas fa-download"></i> Télécharger l'app</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="back-btn" id="backBtn"><i class="fas fa-arrow-left"></i></button>
+      <span class="circuit-title"><i class="fas fa-info-circle"></i> À propos</span>
+      <button class="logo-btn" id="logoBtn">ML</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="about-content">
+      <h2><i class="fas fa-bolt"></i> MEGANE_LEARN</h2>
+      <p>MEGANE_LEARN est une application web interactive dédiée à l'apprentissage des circuits électriques en régime sinusoïdal. Notre objectif est de rendre l'électricité accessible et intuitive grâce à des simulations visuelles et des cours interactifs.</p>
+      
+      <h2><i class="fas fa-microchip"></i> Fonctionnalités</h2>
+      <ul>
+        <li><i class="fas fa-waveform"></i> 6 circuits interactifs (RL, RC, RLC en série et parallèle)</li>
+        <li><i class="fas fa-chart-line"></i> Diagrammes de Fresnel en temps réel</li>
+        <li><i class="fas fa-calculator"></i> Calculs automatiques des grandeurs électriques</li>
+        <li><i class="fas fa-exchange-alt"></i> Convertisseur d'unités (20 types)</li>
+        <li><i class="fas fa-graduation-cap"></i> Cours détaillés avec exemples</li>
+        <li><i class="fas fa-download"></i> Installation en PWA (hors ligne possible)</li>
+      </ul>
+
+      <h2><i class="fas fa-code"></i> Technologies utilisées</h2>
+      <div class="tech-grid">
+        <span class="tech-badge">HTML5</span>
+        <span class="tech-badge">CSS3</span>
+        <span class="tech-badge">JavaScript</span>
+        <span class="tech-badge">Font Awesome</span>
+        <span class="tech-badge">PWA</span>
+        <span class="tech-badge">Service Worker</span>
+        <span class="tech-badge">Canvas API</span>
+      </div>
+
+      <div class="version">
+        <i class="fas fa-code-branch"></i> Version 1.0 | Conçu pour l'apprentissage interactif
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/structure.js"></script>
+  <script>
+    document.getElementById('backBtn')?.addEventListener('click', () => window.location.href = 'index.html');
+    document.getElementById('convertBtn')?.addEventListener('click', () => window.location.href = 'convert.html');
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+  </script>
+</body>
+</html>
