@@ -1,0 +1,648 @@
+/* ═══════════════════════════════════════════════
+   MEGANE_LEARN — structure.css
+   Styles communs à toutes les pages circuits
+═══════════════════════════════════════════════ */
+
+/* ── Variables héritées de index.css ── */
+:root {
+  --bg: #e8ecf1;
+  --surface: #e8ecf1;
+  --shadow-dark: #c5cad4;
+  --shadow-light: #ffffff;
+  --text-main: #2d3548;
+  --text-muted: #7a8499;
+  --accent: #4f7cff;
+  --gold: #ffc94a;
+  --green: #2ecc71;
+  --red: #ff4d6d;
+  --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+  --bg: #1e2330;
+  --surface: #1e2330;
+  --shadow-dark: #14181f;
+  --shadow-light: #2a3040;
+  --text-main: #dce6f5;
+  --text-muted: #6a7a99;
+  --accent: #5d8aff;
+  --gold: #ffd966;
+  --green: #39ff82;
+  --red: #ff6b8b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background var(--transition), color var(--transition);
+}
+
+/* ═══════════════════════════════════════════════
+   SIDEBAR OVERLAY
+═══════════════════════════════════════════════ */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+ 
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ═══════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 65%;
+  max-width: 300px;
+  height: 100vh;
+  z-index: 300;
+  background: var(--surface);
+  box-shadow: -8px 0 30px var(--shadow-dark);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background var(--transition);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 0 0 20px;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Header sidebar */
+.sidebar-header {
+  padding: 28px 20px 16px;
+  border-bottom: 1px solid var(--shadow-dark);
+  text-align: center;
+}
+
+.sidebar-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+
+/* Corps sidebar */
+.sidebar-body {
+  flex: 1;
+  padding: 20px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Footer sidebar (bouton cours) */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid var(--shadow-dark);
+  margin-top: auto;
+}
+
+.sidebar-footer .sidebar-btn {
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ── Toggle dark mode ── */
+.dark-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  transition: transform var(--transition);
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-label i {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-thumb {
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  background: var(--surface);
+  box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+  transition: var(--transition);
+}
+
+.toggle-thumb::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  box-shadow: 2px 2px 5px var(--shadow-dark);
+  transition: transform var(--transition), background var(--transition);
+}
+
+.toggle-switch input:checked + .toggle-thumb::after {
+  transform: translateX(20px);
+  background: var(--accent);
+}
+
+/* ── Séparateur ── */
+.sidebar-divider {
+  height: 1px;
+  background: var(--shadow-dark);
+  border-radius: 1px;
+  margin: 4px 0;
+}
+
+/* ── Navigation sidebar ── */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--surface);
+  box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light);
+  transition: box-shadow var(--transition), color var(--transition), transform var(--transition);
+}
+
+.sidebar-btn i {
+  width: 22px;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--accent);
+}
+
+.sidebar-btn:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 6px var(--shadow-dark), -2px -2px 6px var(--shadow-light);
+}
+
+.sidebar-btn:active {
+  transform: translateY(0);
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+}
+
+/* ── Bouton cours (vert) ── */
+.sidebar-btn.cours-btn {
+  background: var(--green);
+  color: white;
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+}
+
+.sidebar-btn.cours-btn i {
+  color: white;
+}
+
+.sidebar-btn.cours-btn:hover {
+  background: #27ae60;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════
+   HEADER FIXE
+═══════════════════════════════════════════════ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--bg);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 50px;
+  padding: 0 8px 0 14px;
+  background: var(--surface);
+  border-radius: 25px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+}
+
+.back-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: box-shadow var(--transition);
+}
+
+.back-btn:active {
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+}
+
+.circuit-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-main);
+  letter-spacing: 1px;
+}
+
+.logo-btn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════
+   CONTENU PRINCIPAL
+═══════════════════════════════════════════════ */
+.main-content {
+  flex: 1;
+  padding: 8px 16px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+/* ── CARTES ── */
+.card {
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+  padding: 16px;
+}
+
+.card-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: 'Share Tech Mono', monospace;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-label i {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* ── SLIDERS & INPUTS ── */
+.param-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.param-row:last-child {
+  margin-bottom: 0;
+}
+
+.param-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.param-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.param-name span {
+  color: var(--accent);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.param-input {
+  width: 80px;
+  padding: 4px 8px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  resize: none;
+  height: 32px;
+}
+
+.param-input:focus {
+  box-shadow: inset 4px 4px 9px var(--shadow-dark), inset -4px -4px 9px var(--shadow-light);
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--shadow-dark);
+  border-radius: 2px;
+  outline: none;
+  box-shadow: inset 2px 2px 4px var(--shadow-dark), inset -2px -2px 4px var(--shadow-light);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 3px 3px 7px var(--shadow-dark), -3px -3px 7px var(--shadow-light);
+  cursor: pointer;
+  border: 2px solid var(--accent);
+}
+
+.param-unit {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: 'Share Tech Mono', monospace;
+  text-align: right;
+}
+
+/* ── GRILLE RÉSULTATS ── */
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.result-item {
+  background: var(--surface);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+}
+
+.result-item.full {
+  grid-column: span 2;
+}
+
+.rlabel {
+  font-size: 0.68rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.rval {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* ── DIAGRAMME ── */
+.diagram-frame {
+  width: 100%;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.diagram-frame canvas {
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+  background: #060b14;
+  border-radius: 8px;
+}
+
+/* ── LÉGENDE ── */
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* ── FORMULES ── */
+.formula-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formula-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+}
+
+.formula-expr {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.formula-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.formula-result {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ── FRACTIONS ── */
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.fraction-num {
+  border-bottom: 2px solid var(--accent);
+  padding: 0 4px;
+}
+
+.fraction-den {
+  padding: 0 4px;
+}
+
+.inline-math {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1rem;
+}
+
+/* ── COULEURS SPÉCIFIQUES ── */
+.c-accent { color: var(--accent); }
+.c-gold   { color: var(--gold); }
+.c-green  { color: var(--green); }
+.c-red    { color: var(--red); }
+.c-white  { color: var(--text-main); }
+
+/* ── GESTION DES ONGLETS ── */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── FOOTER NAV FIXE ── */
+.footer-nav {
+  position: fixed;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+  padding: 0 12px;
+  background: var(--surface);
+  border-radius: 25px;
+  box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 3px 3px 8px var(--shadow-dark), -3px -3px 8px var(--shadow-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  transition: all var(--transition);
+}
+
+.nav-btn.active {
+  box-shadow: inset 3px 3px 8px var(--shadow-dark), inset -3px -3px 8px var(--shadow-light);
+  color: var(--accent);
+}
+
+.nav-btn:hover {
+  color: var(--accent);
+}
