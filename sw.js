@@ -3,7 +3,35 @@
    Stratégie : Cache d'abord, réseau en fallback
    + Notifications natives
 ═══════════════════════════════════════════════ */
+// Import Firebase dans le Service Worker
+importScripts('https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/12.11.0/firebase-messaging-compat.js');
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCO3TEIw7WdZhLLMGxkq5xua3M_bdNGI84",
+  authDomain: "megane-cloud.firebaseapp.com",
+  projectId: "megane-cloud",
+  storageBucket: "megane-cloud.firebasestorage.app",
+  messagingSenderId: "879368289094",
+  appId: "1:879368289094:web:b1faff6124a26dc3314347"
+};
+
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage((payload) => {
+  console.log('Notification en arrière-plan:', payload);
+  
+  const notificationTitle = payload.notification?.title || 'MEGANE_LEARN';
+  const notificationOptions = {
+    body: payload.notification?.body || 'Nouvelle notification',
+    icon: '/images/icon-192.png',
+    badge: '/images/icon-192.png',
+    vibrate: [200, 100, 200]
+  };
+  
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
 const CACHE_NAME = 'megane-learn-v2';
 
 // Fichiers statiques à mettre en cache immédiatement
