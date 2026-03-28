@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════
    MEGANE_LEARN — Service Worker Optimisé
    Stratégie : Cache d'abord, réseau en fallback
-   Page hors ligne stylisée
+   + Notifications natives
 ═══════════════════════════════════════════════ */
 
 const CACHE_NAME = 'megane-learn-v2';
@@ -58,7 +58,8 @@ const DYNAMIC_SCRIPTS = [
   '/megane_learn/js/rl-parallele.js',
   '/megane_learn/js/rc-parallele.js',
   '/megane_learn/js/rlc-parallele.js',
-  '/megane_learn/js/convert.js'
+  '/megane_learn/js/convert.js',
+  '/megane_learn/js/notifications.js'
 ];
 
 // Tous les fichiers à mettre en cache
@@ -178,12 +179,8 @@ const OFFLINE_PAGE = `<!DOCTYPE html>
     [data-theme="dark"] .offline-footer {
       color: #5a6a89;
     }
-    .offline-footer i {
-      font-size: 0.65rem;
-    }
   </style>
   <script>
-    // Détection du thème pour la page hors ligne
     const savedTheme = localStorage.getItem('ml_theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
@@ -298,9 +295,56 @@ self.addEventListener('fetch', event => {
   );
 });
 
-/* ── MESSAGE : Communication avec la page ── */
+/* ── NOTIFICATIONS PUSH ── */
+self.addEventListener('push', event => {
+  let data = {
+    title: 'MEGANE_LEARN',
+    body: 'Nouvelle notification',
+    icon: '/images/icon-192.png',
+    badge: '/images/icon-192.png'
+  };
+  
+  if (event.data) {
+    try {
+      const parsed = event.data.json();
+      data = { ...data, ...parsed };
+    } catch(e) {
+      data.body = event.data.text();
+    }
+  }
+  
+  const options = {
+    body: data.body,
+    icon: data.icon,
+    badge: data.badge,
+    vibrate: [200, 100, 200],
+    requireInteraction: true,
+    data: {
+      url: data.url || '/'
+    }
+  };
+  
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+/* ── CLIC SUR NOTIFICATION ── */
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow(event.notification.data.url || '/')
+  );
+});
+
+/* ── MESSAGE DEPUIS LA PAGE ── */
 self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
+  if (event.data && event.data.type === 'SHOW_NOTIFICATION') {
+    self.registration.showNotification(event.data.title, {
+      body: event.data.body,
+      icon: '/images/icon-192.png',
+      badge: '/images/icon-192.png',
+      vibrate: [200, 100, 200]
+    });
   }
 });
