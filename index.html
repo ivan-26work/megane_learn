@@ -205,5 +205,18 @@
       }
     });
   </script>
+  <script type="module" src="js/firebase-config.js"></script>
+<script>
+  const notifBtn = document.getElementById('notifBtn');
+  if (notifBtn) {
+    notifBtn.addEventListener('click', async () => {
+      await askNotif();
+      const token = await window.demandeToken?.();
+      if (token) {
+        console.log('✅ Token FCM:', token);
+      }
+    });
+  }
+</script>
 </body>
     </html>
