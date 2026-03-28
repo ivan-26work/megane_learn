@@ -49,12 +49,15 @@
       <!-- Navigation -->
       <nav class="sidebar-nav">
           
-        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange"></i> MEGANE CONVERT</a>
+        <a href="convert.html" class="sidebar-btn"><i class="fas fa-exchange-alt"></i> MEGANE CONVERT</a>
         <a href="apropos.html" class="sidebar-btn"><i class="fas fa-info-circle"></i> À propos</a>
         <a href="contact.html" class="sidebar-btn"><i class="fas fa-envelope"></i> Contact</a>
         <a href="faq.html" class="sidebar-btn"><i class="fas fa-question-circle"></i> FAQ</a>
         <a href="aide.html" class="sidebar-btn"><i class="fas fa-life-ring"></i> Aide</a>
         <a href="confidentialite.html" class="sidebar-btn"><i class="fas fa-lock"></i> Confidentialité</a>
+        <button class="sidebar-btn" id="notifBtn" onclick="askNotif()" style="width:100%; text-align:left;">
+          <i class="fas fa-bell"></i> Activer les notifications
+        </button>
       </nav>
 
       <!-- Favoris (injecté par JS) -->
@@ -185,23 +188,22 @@
   <div class="toast" id="toast"></div>
 
   <script src="js/index.js"></script>
-  <script src="js/index.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  }
-  
-  document.getElementById('convertBtn')?.addEventListener('click', () => {
-    window.location.href = 'convert.html';
-  });
-  
-  // FORCER LA RÉINITIALISATION QUAND ON REVIENT SUR LA PAGE
-  window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-      // La page vient du cache bfcache (back/forward)
-      location.reload();
+  <script src="js/notifications.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
     }
-  });
-</script>
+    
+    document.getElementById('convertBtn')?.addEventListener('click', () => {
+      window.location.href = 'convert.html';
+    });
+    
+    // FORCER LA RÉINITIALISATION QUAND ON REVIENT SUR LA PAGE
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        location.reload();
+      }
+    });
+  </script>
 </body>
-</html>
+    </html>
